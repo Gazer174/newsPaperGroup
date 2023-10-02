@@ -7,8 +7,9 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Välkommen till tidnings adminsitrationen!");
         System.out.println("1. Lägg till tidning");
-        //System.out.println("Visa alla tidningar");
-        System.out.println("Ditt val: ");
+        System.out.println("2 - Visa alla tidningar");
+        System.out.println("3 - Ändra tidning");
+        System.out.println("");
         int userChoice = input.nextInt();
         input.nextLine();
 
@@ -24,9 +25,29 @@ public class Main {
             String newName = input.nextLine();
             Newspaper n = new Newspaper(newName);
             allNewspapers.add(n);
+
+
         } while (userChoice!=0);
+
+    }
+
+    public static void removePaper(){
+
+        System.out.println("ange ID på den tidning du vill ta bort");
+
+        int foundId = input.nextInt();
+        input.nextLine()//consumes rest of line.
+
+        for (int i = 0; i < allNewspapers.size();i++){
+            if (allNewspapers.get(i).getPaperId()==foundId){
+                allNewspapers.remove(i);
+                break;
+            }
+        }
 
 
     }
+
+
 
 }
