@@ -1,9 +1,12 @@
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
     static Scanner input = new Scanner(System.in);
     static ArrayList<Newspaper> allNewspapers = new ArrayList<Newspaper>();
+    public static int paperIdTracker = 1;
     public static void main(String[] args) {
         boolean exitProgram = false;
         do {
@@ -29,12 +32,28 @@ public class Main {
 
             System.out.print("Vad ska tidningen ha för namn: ");
             String newName = input.nextLine();
-            Newspaper n = new Newspaper(newName);
+
+
+
+        System.out.println("hur många sidor?");
+        int pagesInput = input.nextInt();
+        System.out.println("vad ska priset vara?: ");
+        double price = input.nextDouble();
+        String a = dateOut();
+
+        input.nextLine();
+            Newspaper n = new Newspaper(newName,a,pagesInput,price);
             allNewspapers.add(n);
             System.out.println("du har lagt till " + n);
 
 
 
+    }
+    public static String dateOut(){
+        Date a = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yy");
+        String str = formatter.format(a);
+        return str;
     }
     public static void showAllPapers(){
         for (Newspaper n:allNewspapers){

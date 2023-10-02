@@ -1,17 +1,16 @@
-import javax.xml.crypto.Data;
 import java.util.Date;
 
 public class Newspaper {
     private String paperName;
     private int paperId;
-    private Date date;
+    private String date;
     private int pages;
     private double price;
     private String articles;
 
-    public Newspaper(String paperName, int paperId, Date date, int pages, double price, String articles) {
+    public Newspaper(String paperName, String date, int pages, double price) {
         this.paperName = paperName;
-        this.paperId = paperId;
+        this.paperId = Main.paperIdTracker++;
         this.date = date;
         this.pages = pages;
         this.price = price;
@@ -37,12 +36,12 @@ public class Newspaper {
         this.paperId = paperId;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
     public void setDate(Date date) {
-        this.date = date;
+        this.date = String.valueOf(date);
     }
 
     public int getPages() {
